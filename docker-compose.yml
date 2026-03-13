@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  ann-training:
+    build: .
+    image: ann-from-scratch:latest
+    container_name: ann-training
+    volumes:
+      - ./output:/app/output
+      - ./models:/app/models
+    environment:
+      - PYTHONUNBUFFERED=1
+    # Uncomment to customize training parameters:
+    # command: python train.py --activation relu --optimizer sgd --l_rate 0.05 --batch_size 64
